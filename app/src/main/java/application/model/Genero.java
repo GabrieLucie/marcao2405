@@ -1,10 +1,13 @@
 package application.model;
 
+import java.util.Set;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,6 +19,15 @@ public class Genero {
     @Column(nullable = false)
     private String nome;
 
+    @OneToMany(mappedBy = "genero")
+    private Set<Livro> Livros;
+
+    public Set<Livro> getLivros() {
+        return Livros;
+    }
+    public void setLivros(Set<Livro> livros) {
+        Livros = livros;
+    }
     public long getId() {
         return id;
     }
